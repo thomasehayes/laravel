@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sayhello/{name?}', function($name) {
+Route::get('/sayhello/{name?}', function($name = "Hello") {
 	$data = array('name' => $name);
 	return view('my-first-view', $data);
 });
@@ -23,12 +23,20 @@ Route::get('/sayhello/{name?}', function($name) {
 Route::get('/uppercase/{name?}', function($name = "Hello")
 {	
 	$str = strtoupper($name);
-	return "Hello, $str!";
+	$data = [
+		'str' => $str,
+		'name' => $name
+	];
+	return view('uppercase', $data);
 });
 
 Route::get('/increment/{number?}', function($number = 0) {
 	$inc = $number + 1;
-	return $inc;
+	$data = [
+		'number' => $number,
+		'inc' => $inc
+	];
+	return view('increment', $data);
 });
 
 Route::get('/add/{num1}/{num2}', function($num1, $num2) {
