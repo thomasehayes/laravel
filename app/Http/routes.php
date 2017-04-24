@@ -20,3 +20,8 @@ Route::get('/uppercase/{name?}', function($name = "Hello")
 	$str = strtoupper($name);
 	return "Hello, $str!";
 });
+
+Route::get('/increment/{number?}', function($number = 0) {
+	$inc = $number + 1;
+	return $inc;
+});
