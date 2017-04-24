@@ -41,11 +41,9 @@ Route::get('/rolldice/{guess?}', function($guess = 0) {
 	
 	 if ($guess == $random) {
  		$message = "Good Guess";
-	} 
-	if(($guess) > ($random)) {
+	} else if(($guess) > ($random)) {
  		$message = "Guess Lower";
-	}  
-	if (($guess) < ($random)) {
+	}  else {
  		$message = "Guess Higher";
  	}
 	
