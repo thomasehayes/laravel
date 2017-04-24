@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/uppercase/{name}', function($name)
-{
-	return "Hello, "<?= strtoupper($name)?> "!";
+Route::get('/uppercase/{name?}', function($name = "Hello")
+{	
+	$str = strtoupper($name);
+	return "Hello, $str!";
 });
