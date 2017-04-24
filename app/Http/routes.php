@@ -19,9 +19,9 @@ Route::get('/uppercase/{name?}', 'HomeController@uppercase');
 
 Route::get('/increment/{number?}', 'HomeController@increment');
 
-Route::get('/add/{num1}/{num2}', 'HomeController@add');
+Route::get('/add/{num1}/{num2}', 'ExampleController@add');
 
-Route::get('/rolldice/{guess?}', 'HomeController@rollDice');
+Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
 
 
 
