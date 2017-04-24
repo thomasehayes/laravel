@@ -25,3 +25,8 @@ Route::get('/increment/{number?}', function($number = 0) {
 	$inc = $number + 1;
 	return $inc;
 });
+
+Route::get('/add/{num1}/{num2}', function($num1, $num2) {
+	$add = $num1 + $num2;
+	return $add;
+});
