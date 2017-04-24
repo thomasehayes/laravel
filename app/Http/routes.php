@@ -11,53 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/sayhello/{name?}', function($name = "Hello") {
-	$data = array('name' => $name);
-	return view('my-first-view', $data);
-});
+Route::get('/sayhello/{name}', 'HomeController@sayHello');
 
-Route::get('/uppercase/{name?}', function($name = "Hello")
-{	
-	$str = strtoupper($name);
-	$data = [
-		'str' => $str,
-		'name' => $name
-	];
-	return view('uppercase', $data);
-});
+Route::get('/uppercase/{name?}', 'HomeController@uppercase');
 
-Route::get('/increment/{number?}', function($number = 0) {
-	$inc = $number + 1;
-	$data = [
-		'number' => $number,
-		'inc' => $inc
-	];
-	return view('increment', $data);
-});
+Route::get('/increment/{number?}', 'HomeController@increment');
 
-Route::get('/add/{num1}/{num2}', function($num1, $num2) {
-	$add = $num1 + $num2;
-	return $add;
-});
+Route::get('/add/{num1}/{num2}', 'HomeController@add');
 
-Route::get('/rolldice/{guess?}', function($guess = 0) {
-	 $random = mt_rand(1,6);
-	
-	 if ($guess == $random) {
- 		$message = "Good Guess";
-	} else if(($guess) > ($random)) {
- 		$message = "Guess Lower";
-	}  else {
- 		$message = "Guess Higher";
- 	}
-	
-	 $data = ['random' => $random, 'guess' => $guess, 'message' => $message];
-	 return view('roll-dice', $data);
-});
+Route::get('/rolldice/{guess?}', 'HomeController@rollDice');
 
 
 
