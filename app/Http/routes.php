@@ -11,47 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@showWelcome');
 
-Route::get('/sayhello/{name?}', function($name) {
-	$data = array('name' => $name);
-	return view('my-first-view', $data);
-});
+Route::get('/sayhello/{name}', 'HomeController@sayHello');
 
-Route::get('/uppercase/{name?}', function($name = "Hello")
-{	
-	$str = strtoupper($name);
-	return "Hello, $str!";
-});
+Route::get('/uppercase/{name?}', 'HomeController@uppercase');
 
-Route::get('/increment/{number?}', function($number = 0) {
-	$inc = $number + 1;
-	return $inc;
-});
+Route::get('/increment/{number?}', 'HomeController@increment');
 
-Route::get('/add/{num1}/{num2}', function($num1, $num2) {
-	$add = $num1 + $num2;
-	return $add;
-});
+Route::get('/add/{num1}/{num2}', 'ExampleController@add');
 
-Route::get('/rolldice/{guess?}', function($guess = 0) {
-	 $random = mt_rand(1,6);
-	
-	 if ($guess == $random) {
- 		$message = "Good Guess";
-	} else if(($guess) > ($random)) {
- 		$message = "Guess Lower";
-	}  else {
- 		$message = "Guess Higher";
- 	}
-	
-	 $data = ['random' => $random, 'guess' => $guess, 'message' => $message];
-	 return view('roll-dice', $data);
-});
+Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
 
+// // CRUD operation for posts
+// Route::get('/posts', 'PostsController@index'); // Show all the posts
+// Route::get('/posts/create', 'PostsController@create'); // show the form to create a post
+// Route::post('/posts', 'PostsController@store'); // save the new post
+// Route::get('/posts/{posts}', 'PostsController@show'); // show a specific post(by id)
+// Route::get('/posts/{posts}/edit', 'PostsController@edit'); // show the form to edit a post
+// Route::put('/posts/{posts}', 'PostsController@update'); // update the post in the database
+// Route::delete('/posts/{posts}', 'PostsController@destroy'); // delete a post
 
-
-
+// same as the 7 lines above. This is the shorthand for it. 
+Route::resource('posts', 'PostsController'); // A resource controller
 
