@@ -12,7 +12,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title', 50);
             $table->string('url')->unique();
-            $table->string('content', 1000);
+            $table->text('content');
             $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
