@@ -22,7 +22,7 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        return 'Save the new post';    
+          
     }
 
     public function show($id)
@@ -37,11 +37,11 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)
     {
-        return 'Update the post in the database';    
+            
     }
 
     public function destroy($id)
     {
-        return 'Delete a post';    
+          
     }
 }
