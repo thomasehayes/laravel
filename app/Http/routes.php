@@ -23,7 +23,15 @@ Route::get('/add/{num1}/{num2}', 'ExampleController@add');
 
 Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
 
+// // CRUD operation for posts
+// Route::get('/posts', 'PostsController@index'); // Show all the posts
+// Route::get('/posts/create', 'PostsController@create'); // show the form to create a post
+// Route::post('/posts', 'PostsController@store'); // save the new post
+// Route::get('/posts/{posts}', 'PostsController@show'); // show a specific post(by id)
+// Route::get('/posts/{posts}/edit', 'PostsController@edit'); // show the form to edit a post
+// Route::put('/posts/{posts}', 'PostsController@update'); // update the post in the database
+// Route::delete('/posts/{posts}', 'PostsController@destroy'); // delete a post
 
-
-
+// same as the 7 lines above. This is the shorthand for it. 
+Route::resource('posts', 'PostsController'); // A resource controller
 
