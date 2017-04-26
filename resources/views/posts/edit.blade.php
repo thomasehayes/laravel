@@ -4,7 +4,7 @@
 
     <h1>Edit Post</h1>
     
-	<form method="POST" action="{{ action('PostsController@update', [1] )}}">
+	<form method="POST" action="{{ action('PostsController@update', [$post->id] )}}">
         
         @include('partials.posts-form')
 
@@ -14,7 +14,7 @@
 
 	</form>
 	
-	<form method="POST" action="{{ action('PostsController@destroy', [1]) }}">
+	<form method="POST" action="{{ action('PostsController@destroy', [$post->id]) }}">
 		{!! csrf_field() !!} 
         <input type="submit" class="col-sm-3 btn btn-danger" value="Delete Post">
         {{ method_field('DELETE') }}

@@ -12,7 +12,10 @@ class PostsController extends Controller
 
     public function index()
     {
-        return 'A listing of all posts';
+        $posts = \App\Models\Post::all();
+        $data = [];
+        $data['posts'] = $posts;
+        return view('posts.index', $data);
     }
 
     public function create()
@@ -22,17 +25,26 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        return back()->withInput();
+        $posts = new \App\Models\Post;
+        $posts->title = $request->title;
+        $posts->content = $request->content;
+        $posts->url = $request->url;
+        $posts->created_by = 14;
+        $posts->save();
+
+        return redirect()->action('PostsController@index');
     }
 
     public function show($id)
     {
-        return 'Show a specific post by id';    
+        $post = \App\Models\Post::find($id);
+        return view('posts.show', ['post'=>$post]);    
     }
 
     public function edit($id)
-    {
-        return view('posts.edit');   
+    {   
+        $post = \App\Models\Post::find($id);
+        return view('posts.edit', ['post'=>$post]);   
     }
 
     public function update(Request $request, $id)
@@ -42,6 +54,8 @@ class PostsController extends Controller
 
     public function destroy($id)
     {
-        return "Deleted Post";
+        $post = \App\Models\Post::find($id);
+        $post->delete();
+        return redirect()->action('PostsController@index');
     }
 }

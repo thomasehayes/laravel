@@ -1,0 +1,22 @@
+@extends('layouts.master')
+
+@section('content')
+	<div class="container" style="background-color: #D3D3D3;">
+		<h1 class="text-center">All Posts</h1>
+		<table class="table">
+			<tr>
+				<th class="col-sm-4"></a>Title:</th>
+				<th class="col-sm-4">Content:</th>
+				<th class="col-sm-4">URL:</th>
+			</tr>
+			@foreach($posts as $post) 
+				<tr>
+					<td><a href="{{action('PostsController@show', $post->id)}}"> {{ $post->title}} </a></td>
+					<td> {{ $post->content}}</td>
+					<td> {{ $post->url}}</td>
+				</tr>
+			@endforeach
+		</table>
+	</div>
+
+@stop

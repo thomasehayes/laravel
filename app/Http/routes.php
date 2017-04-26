@@ -37,3 +37,8 @@ Route::resource('posts', 'PostsController'); // A resource controller
 
 Route::resource('students', 'StudentsController');
 
+Route::get('orm-test', function ()
+{
+
+});
+
