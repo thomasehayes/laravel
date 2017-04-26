@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<div class="container" style="background-color: #D3D3D3;">
+	<div class="container">
 		<h1 class="text-center">All Posts</h1>
 		<table class="table">
 			<tr>
