@@ -39,7 +39,7 @@ Route::resource('students', 'StudentsController');
 
 Route::get('orm-test', function ()
 {
-	user = new \App\User();
+	$user = new \App\User();
     $user->name = "Thomas";
     $user->email = "thomashayes7889@gmail.com";
     $user->password = "password";
