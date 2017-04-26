@@ -40,7 +40,7 @@ Route::resource('students', 'StudentsController');
 Route::get('orm-test', function ()
 {
 	user = new \App\User();
-    $user->name = 'Thomas';
+    $user->name = "Thomas";
     $user->email = "thomashayes7889@gmail.com";
     $user->password = "password";
     $user->save();
@@ -48,9 +48,9 @@ Route::get('orm-test', function ()
     $post = new \App\Models\Post();
     $post->title = "My first post";
     $post->content = "Random content";
-    $post->url = "http://codeup.com';
+    $post->url = "http://codeup.com";
     $post->created_by = $user->id;
     $post->save();
-    
+
 });
 
