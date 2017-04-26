@@ -7,41 +7,42 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PostsController extends Controller
+class StudentsController extends Controller
 {
 
     public function index()
     {
-        return 'A listing of all posts';
+        //
     }
 
     public function create()
     {
-        return view('posts.create');
+        return view('students.create');
     }
 
     public function store(Request $request)
     {
-        return back()->withInput();
+
+        return back()->withInput(); // Redirects back to the previous page (/students/create) with all the user input
     }
 
     public function show($id)
     {
-        return 'Show a specific post by id';    
+        //
     }
 
     public function edit($id)
     {
-        return view('posts.edit');   
+        return view('students.edit');
     }
 
     public function update(Request $request, $id)
     {
-            
+        //
     }
 
     public function destroy($id)
     {
-        return "Deleted Post";
+        //
     }
 }

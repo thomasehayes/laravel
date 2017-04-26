@@ -35,3 +35,5 @@ Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
 // same as the 7 lines above. This is the shorthand for it. 
 Route::resource('posts', 'PostsController'); // A resource controller
 
+Route::resource('students', 'StudentsController');
+
