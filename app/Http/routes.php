@@ -41,20 +41,16 @@ Route::get('orm-test', function ()
 {
 	user = new \App\User();
     $user->name = 'Thomas';
-    $user->email = ‘thomashayes7889@gmail.com’;
-    $user->password = ‘password’;
+    $user->email = "thomashayes7889@gmail.com";
+    $user->password = "password";
     $user->save();
 
     $post = new \App\Models\Post();
-    $post->title = ‘My first post’;
-    $post->content = ‘Random content’;
-    $post->url = ‘http://codeup.com';
+    $post->title = "My first post";
+    $post->content = "Random content";
+    $post->url = "http://codeup.com';
     $post->created_by = $user->id;
     $post->save();
-
-    $post = \App\Models\Post::find(3); //call find first if needing to update
-
-    $post->content = ‘New content’;
-    $post-save(); //update
+    
 });
 
