@@ -10,17 +10,21 @@
             class="form-control" 
             value="{{old('title')}}"
         >
+        @if ($errors->has('title'))
+            {{ $errors->first('title') }}
+        @endif
 	</div>
 
 	<div class="form-group">
 		<label for="content">Write whatever you want here</label>
-		<input 
+		<textarea 
             type="text" 
             id="content" 
             name="content" 
             class="form-control" 
             value="{{old('content')}}"
         >
+        </textarea>
 	</div>
 
 	<div class="form-group">
@@ -32,4 +36,7 @@
             class="form-control" 
             value="{{old('url')}}"
         >
+        @if ($errors->has('url'))
+            {{$errors->first('url')}}
+        @endif
 	</div>

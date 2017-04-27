@@ -25,6 +25,9 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+        $rules = \App\Models\Post::$rules;
+        $this->validate($request, $rules);
+
         $posts = new \App\Models\Post;
         $posts->title = $request->title;
         $posts->content = $request->content;
