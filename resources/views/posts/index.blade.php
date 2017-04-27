@@ -5,15 +5,17 @@
 		<h1 class="text-center">All Posts</h1>
 		<table class="table">
 			<tr>
-				<th class="col-sm-4"></a>Title:</th>
-				<th class="col-sm-4">Content:</th>
-				<th class="col-sm-4">URL:</th>
+				<th class="col-sm-3"></a>Title:</th>
+				<th class="col-sm-3">Content:</th>
+				<th class="col-sm-3">URL:</th>
+				<th class="col-sm-3"> Written on: </th>
 			</tr>
 			@foreach($posts as $post) 
 				<tr>
 					<td><a href="{{action('PostsController@show', $post->id)}}"> {{ $post->title}} </a></td>
 					<td> {{ $post->content}}</td>
 					<td> {{ $post->url}}</td>
+					<td>{{ $post->created_at->setTimeZone('America/Chicago')}}</td>
 				</tr>
 			@endforeach
 		</table>

@@ -27,7 +27,7 @@
 
 	    		<ul class="nav navbar-nav">
 
-	        		<li class="active"><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
+	        		<li><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
 
 		        	<li><a href="{{action('StudentsController@index')}}">Students</a></li>
 

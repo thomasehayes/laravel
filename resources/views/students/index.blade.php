@@ -4,13 +4,15 @@
 
 	<table class="table">
 		<tr>
-			<th>First Name</th>
-			<th>School Name</th>
+			<th class="col-sm-4">First Name</th>
+			<th class="col-sm-4">School Name</th>
+			<th class="col-sm-4">Written on</th>
 		</tr>
 		@foreach($students as $student)
 			<tr>
 				<td>{{ $student->first_name }}</td>
 				<td>{{ $student->school_name }}</td>
+				<td>{{ $student->created_at->setTimeZone('America/Chicago')}}</td>
 			</tr>
 		@endforeach
 	</table>
@@ -19,6 +21,7 @@
 			{!! csrf_field()!!}
 			<input type="submit" class="btn btn-default" value="Add New Student">
 		</form>
+
 	{!! $students->render() !!}
 	
 @stop
