@@ -10,5 +10,8 @@
 
 		<input type="submit" class="btn btn-default" value="Post">
 	</form>
+	<form method="GET" action="{{ action('PostsController@index') }}">
+		<input type="submit" class="btn btn-default" value="Home">
+	</form>
 
 @stop

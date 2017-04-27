@@ -9,6 +9,9 @@
             class="form-control" 
             value="{{old('first_name')}}"
         >
+        @if ($errors->has('first_name'))
+            {{ $errors->first('first_name') }}
+        @endif
 	</div>
 
 	<div class="form-group">
@@ -28,7 +31,11 @@
                 type="checkbox" 
                 id="subscribed" 
                 name="subscribed" 
-                {{ old('subscribed') === 'on' ? 'checked' : '' }}
+                @if(isset($student->subscribed))
+                    {{ old('subscribed') === '1' ? 'checked' : '' }}
+                @else
+                    {{ old('subscribed') === 'on' ? 'checked' : '' }}
+                @endif
             >
 		</label>
 		
@@ -43,4 +50,7 @@
             class="form-control" 
             value="{{old('school_name')}}"
         >
+        @if ($errors->has('school_name'))
+            {{ $errors->first('school_name') }}
+        @endif
 	</div>

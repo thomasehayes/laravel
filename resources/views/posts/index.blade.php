@@ -22,7 +22,7 @@
 			{!! csrf_field()!!}
 			<input type="submit" class="btn btn-default" value="Create Posts">
 		</form>
-		
+		{!! $posts->render() !!}
 	</div>
 
 @stop

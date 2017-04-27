@@ -1,6 +1,6 @@
     {!! csrf_field() !!} 
     <!-- This protects from cross-site request forgery -->
-	
+
     <div class="form-group">
 		<label for="title">Post's Title</label>
 		<input 

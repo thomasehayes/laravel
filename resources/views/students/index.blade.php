@@ -15,6 +15,10 @@
 		@endforeach
 	</table>
 
-	<input type="submit" class="btn btn-default" value="Add Student">
-
+		<form method="get" action="{{ action('StudentsController@create') }}">
+			{!! csrf_field()!!}
+			<input type="submit" class="btn btn-default" value="Add New Student">
+		</form>
+	{!! $students->render() !!}
+	
 @stop

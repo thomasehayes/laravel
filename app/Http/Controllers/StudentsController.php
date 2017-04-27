@@ -15,7 +15,7 @@ class StudentsController extends Controller
         // 1. Model queries the db
         // 2. Pass the results/rows form the model to the view
 
-        $students = \App\Models\Student::all();
+        $students = \App\Models\Student::paginate(4);
         return view('students.index')->with('students', $students);
     }
 
@@ -38,6 +38,7 @@ class StudentsController extends Controller
         $student->school_name = $request->school_name;
         $student->subscribed = $request->subscribed;
         $student->description = $request->description;
+        // dd($request->all());
         $student->save();
 
         return redirect()->action('StudentsController@index');

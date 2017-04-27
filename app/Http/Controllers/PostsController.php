@@ -12,7 +12,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = \App\Models\Post::all();
+        $posts = \App\Models\Post::paginate(4);
         $data = [];
         $data['posts'] = $posts;
         return view('posts.index', $data);
