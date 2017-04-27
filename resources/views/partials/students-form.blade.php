@@ -32,9 +32,9 @@
                 id="subscribed" 
                 name="subscribed" 
                 @if(isset($student->subscribed))
-                    {{ old('subscribed') === '1' ? 'checked' : '' }}
+                    {{ old('$student->subscribed') === '1' ? 'checked' : '' }}
                 @else
-                    {{ old('subscribed') === 'on' ? 'checked' : '' }}
+                    {{ old('$student->subscribed') === 'on' ? 'checked' : '' }}
                 @endif
             >
 		</label>

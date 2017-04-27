@@ -22,16 +22,16 @@
 	      		</button>
 	      		<a class="navbar-brand" href="{{action('HomeController@showWelcome')}}">Home</a>
 	    	</div>
-
+	
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 	    		<ul class="nav navbar-nav">
 
-	        		<li><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
+	        		<li {!! \Illuminate\Support\Str::endsWith(action('PostsController@index'), Request::path()) ? ' class="active"' : null !!}><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
 
-		        	<li><a href="{{action('StudentsController@index')}}">Students</a></li>
+		        	<li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
 
-		        	<li class="dropdown">
+<!-- 		        	<li class="dropdown">
 		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 
 		          		<ul class="dropdown-menu" role="menu">
@@ -44,7 +44,7 @@
 		            		<li><a href="#">One more separated link</a></li>
 		        		</ul>
 
-		        	</li>
+		        	</li> -->
 
 	      		</ul>
 
@@ -71,6 +71,10 @@
     	@yield('content')
 		
 	</main>
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>

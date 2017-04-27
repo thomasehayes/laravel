@@ -38,7 +38,11 @@ class StudentsController extends Controller
         $student->school_name = $request->school_name;
         $student->subscribed = $request->subscribed;
         $student->description = $request->description;
-        // dd($request->all());
+        if($request->subscribed === 'on') {
+            $student->subscribed = true; 
+        } else {
+            $student->subscribed = false; 
+        }
         $student->save();
 
         return redirect()->action('StudentsController@index');
