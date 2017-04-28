@@ -58,13 +58,8 @@ class StudentsController extends Controller
 
     public function show($id)
     {
-        $student = Student::find($id);
+        $student = Student::findOrFail($id);
 
-        if(!$student) {
-            // abort(403);
-            Log::info("Student with ID:$id cannot be found");
-            throw new \InvalidArgumentException('Student cannot be found');
-        }
         return view('students.show')->with('student', $student);
     }
 
