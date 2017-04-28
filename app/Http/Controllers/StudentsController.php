@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use Session;
+use Log;
 
 class StudentsController extends Controller
 {
@@ -58,6 +59,12 @@ class StudentsController extends Controller
     public function show($id)
     {
         $student = Student::find($id);
+
+        if(!$student) {
+            // abort(403);
+            Log::info("Student with ID:$id cannot be found");
+            throw new \InvalidArgumentException('Student cannot be found');
+        }
         return view('students.show')->with('student', $student);
     }
 

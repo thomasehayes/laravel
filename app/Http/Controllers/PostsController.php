@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Log;
 
 class PostsController extends Controller
 {
@@ -70,11 +71,8 @@ class PostsController extends Controller
         // dd($session->get('greeting')); // Laravel 5
 
 
-        $post = Post::find($id);
-        if(!$post) {
-            $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
-        }
+        $post = Post::findOrFail($id);
+
         return view('posts.show', ['post'=>$post]);    
     }
 
@@ -84,8 +82,10 @@ class PostsController extends Controller
         $post = Post::find($id);
         
         if(!$post) {
+            Log::info('Cannot edit post');
             $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            abort(404);
+            // return redirect()->action('PostsController@index');
         }
 
         return view('posts.edit', ['post'=>$post]);   
@@ -97,8 +97,10 @@ class PostsController extends Controller
 
         $post = Post::find($id);
         if(!$post) {
+            Log::info('Cannot add post');
             $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            abort(404);
+            // return redirect()->action('PostsController@index');
         }
 
         $post->title = $request->title;
@@ -116,8 +118,10 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         if(!$post) {
+            Log::info("Cannot delete post $id");
             $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            abort(404);
+            // return redirect()->action('PostsController@index');
         }
 
         $post->delete();
