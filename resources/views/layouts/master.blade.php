@@ -67,7 +67,12 @@
 	</nav>
 
 	<main class="container">
-    	
+    	@if(Session::has('successMessage'))
+    		<div class="alert alert-success">{{ session('successMessage') }}</div>
+    	@endif
+    	@if (Session::has('errorMessage'))
+    		<div class="alert alert-warning">{{ session('errorMessage') }}</div>
+    	@endif
     	@yield('content')
 		
 	</main>

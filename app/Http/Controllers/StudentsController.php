@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Student;
+use Session;
 
 class StudentsController extends Controller
 {
@@ -15,7 +17,7 @@ class StudentsController extends Controller
         // 1. Model queries the db
         // 2. Pass the results/rows form the model to the view
 
-        $students = \App\Models\Student::paginate(4);
+        $students = Student::paginate(4);
         return view('students.index')->with('students', $students);
     }
 
@@ -33,7 +35,7 @@ class StudentsController extends Controller
 
         $this->validate($request, $rules);
 
-        $student = new \App\Models\Student();
+        $student = new Student();
         $student->first_name = $request->first_name;
         $student->school_name = $request->school_name;
         $student->subscribed = $request->subscribed;
@@ -43,6 +45,9 @@ class StudentsController extends Controller
         } else {
             $student->subscribed = false; 
         }
+
+        Session::flash('successMessage', 'Post saved successfully');
+
         $student->save();
 
         return redirect()->action('StudentsController@index');
@@ -52,12 +57,13 @@ class StudentsController extends Controller
 
     public function show($id)
     {
-        $student = \App\Models\Student::find($id);
+        $student = Student::find($id);
         return view('students.show')->with('student', $student);
     }
 
     public function edit($id)
     {
+        $student = Student::find($id);
         return view('students.edit');
     }
 
