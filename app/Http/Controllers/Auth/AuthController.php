@@ -27,6 +27,8 @@ class AuthController extends Controller
 
     // This is optional if you used the default values in your routes.php file 
     protected $loginPath = '/login';
+    protected $registerPath = '/register';
+
     /**
      * Create a new authentication controller instance.
      *

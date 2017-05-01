@@ -59,12 +59,15 @@
 	      		</form>
 
 	      		<ul class="nav navbar-nav navbar-right">
+
 	        		
-	        			@if(!\Auth::check()) 
-	        				<li><a href="{{ action('Auth\AuthController@getLogin')}}">Login</a></li>
-	        			@else 
-	        				<li><a href="{{ action('Auth\AuthController@getLogout')}}">Logout</a></li>
-	        			@endif
+        			@if(!\Auth::check()) 
+        				<li><a href="{{ action('Auth\AuthController@getLogin')}}">Login</a></li>
+        				<li><a href="{{ action('Auth\AuthController@postRegister')}}">Register</a></li>
+        			@else 
+        				<li> Welcome {{ Auth::user()->name}}</li>
+        				<li><a href="{{ action('Auth\AuthController@getLogout')}}">Logout</a></li>
+        			@endif
 	        		
 	      		</ul>
 

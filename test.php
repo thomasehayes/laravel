@@ -1,3 +1,15 @@
+# May 1st notes
+Accessors/Mutators are functions on models that run automatically for certain conditions
+
+Get created_at timestamp from the DB and make sure to always output it in a format with the full name of the day
+
+created_at YYYY-MM-DD:H:i:s
+
+created_at data -> function -> output Wednesday, June 5th
+
+
+
+# April 28th notes 
 # Laravel Review
 
 ## Concepts

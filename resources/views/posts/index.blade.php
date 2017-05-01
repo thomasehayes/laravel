@@ -19,12 +19,14 @@
 				</tr>
 			@endforeach
 		</table>
-
-		<form method="get" action="{{ action('PostsController@create') }}">
-			{!! csrf_field()!!}
-			<input type="submit" class="btn btn-default" value="Create Posts">
-		</form>
-		{!! $posts->render() !!}
+		
+		@if(\Auth::id() === $post->created_by)
+			<form method="get" action="{{ action('PostsController@create') }}">
+				{!! csrf_field()!!}
+				<input type="submit" class="btn btn-default" value="Create Posts">
+			</form>
+		@endif
+			{!! $posts->render() !!}
 	</div>
 
 @stop

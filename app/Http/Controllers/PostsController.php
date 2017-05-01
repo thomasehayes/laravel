@@ -13,7 +13,8 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['create', 'store', 'edit', 'update', 'destroy']);
+        $this->middleware('auth', ['except' =>  ['index', 'show']]);
+        // $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     }
 
     // getting access to the request, is as easy as adding it as a parameter to any controller action
@@ -32,9 +33,6 @@ class PostsController extends Controller
         // // $session->put('greet', 'Hello World'); // $_SESSION['greet'] = 'Hello World'; //adding a key
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
        
-        if(\Auth::check()){
-
-        }
 
         $posts = Post::paginate(4);
         $data = [];
@@ -52,25 +50,26 @@ class PostsController extends Controller
         // $session->flush(); // unset($_SESSION); removing everything also looks like this // $_SESSION = [];
 
         // dd($request->session()->get('greet')); // dd($_SESSION['greet']);
+
         return view('posts.create');
     }
 
     public function store(Request $request)
     {
-
-
         $rules = Post::$rules;
         $this->validate($request, $rules);
+
 
         $posts = new Post;
         $posts->title = $request->title;
         $posts->content = $request->content;
         $posts->url = $request->url;
-        $posts->created_by = 14;
+        $posts->created_by = \Auth::id();
         $posts->save();
-
+    
         $request->session()->flash('successMessage', 'Post saved successfully');
         return redirect()->action('PostsController@show', [$posts->id]);
+
     }
 
     public function show(Request $request, $id)
@@ -87,7 +86,6 @@ class PostsController extends Controller
 
     public function edit(Request $request, $id)
     {  
-
         $post = Post::find($id);
         
         if(!$post) {
@@ -96,6 +94,9 @@ class PostsController extends Controller
             abort(404);
             // return redirect()->action('PostsController@index');
         }
+        if(\Auth::id() !== $post->created_by) {
+            abort(403);
+        } 
 
         return view('posts.edit', ['post'=>$post]);   
     }
@@ -132,7 +133,9 @@ class PostsController extends Controller
             abort(404);
             // return redirect()->action('PostsController@index');
         }
-
+        if(\Auth::id() !== $post->created_by) {
+            abort(403);
+        }
         $post->delete();
 
         return redirect()->action('PostsController@index');

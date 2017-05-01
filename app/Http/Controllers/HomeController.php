@@ -6,7 +6,7 @@ class HomeController extends Controller
 {
     public function showWelcome()
     {
-        return redirect()->action('HomeController@sayHello', array('Hello'));
+        return redirect()->action('HomeController@sayHello', array('Hello World'));
     }
 
     public function sayHello($name)
