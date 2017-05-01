@@ -13,4 +13,10 @@ class Post extends BaseModel
             'url'   => 'required|url',
             'content' => 'required',
         );
+
+    // function name is a singular since each Post belongs to One user
+    public function user()
+    {
+    	return $this->belongsTo("App\User", "created_by");
+    }
 }

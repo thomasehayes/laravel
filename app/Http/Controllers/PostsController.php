@@ -34,7 +34,7 @@ class PostsController extends Controller
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
        
 
-        $posts = Post::paginate(4);
+        $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
         $data = [];
         $data['posts'] = $posts;
         return view('posts.index', $data);

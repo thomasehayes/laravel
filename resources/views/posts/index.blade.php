@@ -5,22 +5,24 @@
 		<h1 class="text-center">All Posts</h1>
 		<table class="table">
 			<tr>
-				<th class="col-sm-3"></a>Title:</th>
-				<th class="col-sm-3">Content:</th>
-				<th class="col-sm-3">URL:</th>
-				<th class="col-sm-3"> Written on: </th>
+				<th class="col-sm-2"></a>Title:</th>
+				<th class="col-sm-2">Content:</th>
+				<th class="col-sm-2">URL:</th>
+				<th class="col-sm-2"> Written by: </th>
+				<th class="col-sm-2"> Written on: </th>
 			</tr>
 			@foreach($posts as $post) 
 				<tr>
 					<td><a href="{{action('PostsController@show', $post->id)}}"> {{ $post->title}} </a></td>
 					<td> {{ $post->content}}</td>
 					<td> {{ $post->url}}</td>
+					<td>{{ $post->user->name}}</td>
 					<td>{{ $post->created_at->setTimeZone('America/Chicago')}}</td>
 				</tr>
 			@endforeach
 		</table>
 		
-		@if(\Auth::id() === $post->created_by)
+		@if(\Auth::check())
 			<form method="get" action="{{ action('PostsController@create') }}">
 				{!! csrf_field()!!}
 				<input type="submit" class="btn btn-default" value="Create Posts">

@@ -24,7 +24,46 @@ public function getCreatedAtAttribute($value)
     return $utc->setTimezone('America/Chicago');
 }
 
+How to build relationships
 
+Step 1: Stop and think and talk about the things you're relating
+
+1:1
+username/password
+
+1:Many
+One User has many Posts
+Each post belongs to one and only one user
+(the table that is the many is the one that has the foreign key)
+
+Many to Many
+A single blog Post has many Tags
+A single Tag has many blog posts
+(the table that has foreign keys to both tags and posts is a new table called post_tag)
+
+Step 2:
+Add necessary foreign keys and then specify them as such in migrations
+
+Step 3:
+Go to the models and add relationship functions
+
+// on User.php
+public function posts() 
+{
+	return $this->hasMany('App\Models\Post', 'created_by');
+}
+
+//on Post.php
+public function user()
+{
+	return $this->belongsTo('App\User', 'created_by'); 
+}
+
+Punchline:
+
+$post->user gets you the user object of that post
+
+$user->posts gets you a collection of the posts from that particular user
 
 # April 28th notes 
 # Laravel Review
