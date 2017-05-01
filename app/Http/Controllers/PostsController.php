@@ -33,8 +33,13 @@ class PostsController extends Controller
         // // $session->put('greet', 'Hello World'); // $_SESSION['greet'] = 'Hello World'; //adding a key
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
        
+        if(isset($request->search)) {
+            $posts = Post::with('user')->where('title', 'like', "%$request->search%")->orderBy('created_at', 'desc')->paginate(4);
+        } else {
+            $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
+            
+        }
 
-        $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
         $data = [];
         $data['posts'] = $posts;
         return view('posts.index', $data);
