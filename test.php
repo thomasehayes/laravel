@@ -7,6 +7,23 @@ created_at YYYY-MM-DD:H:i:s
 
 created_at data -> function -> output Wednesday, June 5th
 
+Accessor is a function on a model that accesses data from that model's table and transforms it. This function is called automatically.
+
+Mutator is a function on a model that fires a function automatically on a given property of the object in order to save a transformed version to the db table. 
+
+Hash::make("my-crummy-password");
+
+Accessors run (automatically) on data after we  access it frmo the DB
+Mutators run (automatically) on data before we insert/update it into the DB
+
+------
+
+public function getCreatedAtAttribute($value)
+{
+    $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
+    return $utc->setTimezone('America/Chicago');
+}
+
 
 
 # April 28th notes 
