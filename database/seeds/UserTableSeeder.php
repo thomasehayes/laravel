@@ -11,16 +11,22 @@ class UserTableSeeder extends Seeder
 	
 	public function run()
 	{
-		$faker = Faker\Factory::create();
+		// $faker = Faker\Factory::create();
 
-    	$limit = 100;
+  //   	$limit = 100;
 
-    	for ($i = 0; $i < $limit; $i++) {
-    		$user = new \App\User();
-        	$user->name = $faker->userName;
-        	$user->email = $faker->safeEmail;
-        	$user->password = Hash::make($faker->password);
-        	$user->save();
-    	}
+  //   	for ($i = 0; $i < $limit; $i++) {
+  //   		$user = new \App\User();
+  //       	$user->name = $faker->userName;
+  //       	$user->email = $faker->safeEmail;
+  //       	$user->password = Hash::make($faker->password);
+  //       	$user->save();
+  //   	}
+
+        $user = new \App\User();
+        $user->name = "thomas";
+        $user->email = "thayes7889@gmail.com";
+        $user->password = Hash::make('password');
+        $user->save();
 	}
 }

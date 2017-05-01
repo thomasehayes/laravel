@@ -11,8 +11,12 @@ use Log;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
     // getting access to the request, is as easy as adding it as a parameter to any controller action
-    
     public function index(Request $request) 
     {
         // dd($request->session()); // the session is now an object, not an associative array. 
@@ -27,6 +31,10 @@ class PostsController extends Controller
 
         // // $session->put('greet', 'Hello World'); // $_SESSION['greet'] = 'Hello World'; //adding a key
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
+       
+        if(\Auth::check()){
+
+        }
 
         $posts = Post::paginate(4);
         $data = [];
@@ -44,12 +52,13 @@ class PostsController extends Controller
         // $session->flush(); // unset($_SESSION); removing everything also looks like this // $_SESSION = [];
 
         // dd($request->session()->get('greet')); // dd($_SESSION['greet']);
-
         return view('posts.create');
     }
 
     public function store(Request $request)
     {
+
+
         $rules = Post::$rules;
         $this->validate($request, $rules);
 

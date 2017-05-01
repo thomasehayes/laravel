@@ -1,3 +1,28 @@
+# Laravel Review
+
+## Concepts
+
+## Best Practices
+
+## Vocabulary Terms
+	MVC - model, view, controller
+		- .NET, ruby on rails, django on python, iOS, etc...
+
+	Routes - defines the ways into your application, listens for specified request types (get/post) and the URLs those requests went to. When we hit a route, we fire a function.
+	
+	Controllers - logic for handling requests and providing responses
+
+	Views - html/php necessary to output the content and present UI
+
+	Artisan - command line tools for your Laravel app
+	Composer - dependency management tool (used to install laravel and other PHP libraries)
+	
+	Migrations - systematically create/modify/delete tables and table columns... allows us to version control our db structure
+
+	Eloquent - Laravel's ORM (Object Relational Mapper)
+		- pseudo language(tiny-language) for SQL commands
+		- User::all() vs. select * from user;
+		- User::find(1) vs select * from user where id = 1;
 <?php
 
 // 1. Organize code, similar type of classes

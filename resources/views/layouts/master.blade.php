@@ -59,7 +59,13 @@
 	      		</form>
 
 	      		<ul class="nav navbar-nav navbar-right">
-	        		<li><a href="#">Link</a></li>
+	        		
+	        			@if(!\Auth::check()) 
+	        				<li><a href="{{ action('Auth\AuthController@getLogin')}}">Login</a></li>
+	        			@else 
+	        				<li><a href="{{ action('Auth\AuthController@getLogout')}}">Logout</a></li>
+	        			@endif
+	        		
 	      		</ul>
 
 	    	</div>
