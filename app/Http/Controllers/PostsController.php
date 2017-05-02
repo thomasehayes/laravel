@@ -107,6 +107,7 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $rules = Post::$rules;
         $this->validate($request, $rules);
 
         $post = Post::find($id);
@@ -120,9 +121,9 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->url = $request->url;           
         $post->content = $request->content;
-        $post->created_by = $request->created_by;
+        $post->created_by = $request->id;
         $post->save();
-        $request->session->flash('successMessage', 'Post saved successfully');
+        $request->session()->flash('successMessage', 'Post saved successfully');
         return redirect()->action('PostsController@show', [$post->id]);
 
     }

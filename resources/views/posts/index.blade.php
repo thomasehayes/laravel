@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<div class="container">
+	<div class="container col-sm-12">
 		<h1 class="text-center">All Posts</h1>
 		<table class="table">
 			<tr>
