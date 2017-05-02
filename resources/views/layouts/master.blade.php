@@ -29,8 +29,8 @@
 
 	        		<li {!! \Illuminate\Support\Str::endsWith(action('PostsController@index'), Request::path()) ? ' class="active"' : null !!}><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
 
-		        	<li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
-
+		        	<!-- <li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
+ -->
 <!-- 		        	<li class="dropdown">
 		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 

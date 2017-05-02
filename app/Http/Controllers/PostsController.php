@@ -34,10 +34,9 @@ class PostsController extends Controller
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
        
         if(isset($request->search)) {
-            $posts = Post::with('user')->where('title', 'like', "%$request->search%")->orderBy('created_at', 'desc')->paginate(4);
+            $posts = Post::join('users', 'created_by', '=', 'users.id')->where('title', 'like', "%$request->search%")->orWhere('name', 'like', "%$request->search%")->orderBy('posts.created_at', 'desc')->paginate(4);
         } else {
             $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
-            
         }
 
         $data = [];
