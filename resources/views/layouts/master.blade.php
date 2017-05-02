@@ -49,15 +49,19 @@
 
 	      		</ul>
 
-	    		<form class="navbar-form navbar-left" role="search" action="{{ action('PostsController@index') }}">
+	    		<div class="navbar-form navbar-right" role="search" id="search">
+					
+					<form action="{{ action('PostsController@index')}}" method="GET" id="search">
 
-	        		<div class="form-group">
-	          			<input type="text" class="form-control" placeholder="Search" name="search">
-	        		</div>
+		        		<div class="form-group">
+		          			<input type="text" class="form-control" placeholder="Search" name="search" >
+		        		<button type="submit" class="btn btn-default">Submit</button>
+		        		</div>
+		        		
+					</form>
 
-	        		<button type="submit" class="btn btn-default">Submit</button>
 
-	      		</form>
+	      		</div>
 
 	      		<ul class="nav navbar-nav navbar-right">
 

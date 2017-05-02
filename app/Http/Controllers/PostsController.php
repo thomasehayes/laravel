@@ -34,14 +34,19 @@ class PostsController extends Controller
         // $session->flash('greeting', 'Hello World'); // available only for the NEXT request
        
         if(isset($request->search)) {
-            $posts = Post::join('users', 'created_by', '=', 'users.id')->where('title', 'like', "%$request->search%")->orWhere('name', 'like', "%$request->search%")->orderBy('posts.created_at', 'desc')->paginate(4);
+            $posts = Post::select('posts.*')
+                ->join('users', 'created_by', '=', 'users.id')
+                ->where('title', 'like', "%$request->search%")
+                ->orWhere('name', 'like', "%$request->search%")
+                ->orderBy('posts.created_at', 'desc')
+                ->paginate(4)->appends(['search' => $request->search]);
         } else {
             $posts = Post::with('user')->orderBy('created_at', 'desc')->paginate(4);
         }
 
         $data = [];
         $data['posts'] = $posts;
-        return view('posts.index', $data);
+        return view('posts.index')->with($data);
     }
 
     public function create(Request $request)
@@ -98,7 +103,7 @@ class PostsController extends Controller
             abort(404);
             // return redirect()->action('PostsController@index');
         }
-        if(\Auth::id() !== $post->created_by) {
+        if(\Auth::id() != $post->created_by) {
             abort(403);
         } 
 
