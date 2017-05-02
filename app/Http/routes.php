@@ -15,13 +15,13 @@ Route::get('/', 'HomeController@showWelcome');
 
 Route::get('/sayhello/{name}', 'HomeController@sayHello');
 
-Route::get('/uppercase/{name?}', 'HomeController@uppercase');
+// Route::get('/uppercase/{name?}', 'HomeController@uppercase');
 
-Route::get('/increment/{number?}', 'HomeController@increment');
+// Route::get('/increment/{number?}', 'HomeController@increment');
 
-Route::get('/add/{num1}/{num2}', 'ExampleController@add');
+// Route::get('/add/{num1}/{num2}', 'ExampleController@add');
 
-Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
+// Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
 
 // // CRUD operation for posts
 // Route::get('/posts', 'PostsController@index'); // Show all the posts
