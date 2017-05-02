@@ -18,6 +18,7 @@
 	<div class="form-group">
 		<label for="content">Write whatever you want here</label>
 		<textarea 
+            style="resize:none;" 
             type="text" 
             id="content" 
             name="content" 

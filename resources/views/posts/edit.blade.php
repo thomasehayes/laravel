@@ -28,7 +28,7 @@
 		<div class="row control-group">
 			<div class="form-group col-xs-12 floating-label-form-group controls">
 				<label for="content">Content:</label>
-				<textarea class="form-control" name="content" rows="5" cols="40" placeholder="content">{{ $post->content }}</textarea>
+				<textarea style="resize: none;" class="form-control" name="content" rows="5" cols="40" placeholder="content">{{ $post->content }}</textarea>
 			</div>
 		</div>
 		{{ method_field('PUT') }}
