@@ -37,13 +37,13 @@
 
 		          		<ul class="dropdown-menu" role="menu">
 		          			@if(\Auth::check())
-		            			<li><a href="">My Posts</a></li>
+		            			<li><a href="{{ action('UsersController@index')}}">My Posts</a></li>
 		            		@endif
 		            		
 		            		<li><a href="{{ action('PostsController@create') }}">Create Post</a></li>
-		            		<li class="divider"></li>
 							
 							@if(\Auth::check())
+		            		<li class="divider"></li>
 		            			<li><a href="{{ action('UsersController@show', \Auth::id()) }}">Account Info</a></li>
 		            		@endif
 

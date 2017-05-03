@@ -36,7 +36,7 @@
 		</div>
 		{{ method_field('PUT') }}
 		<input type="hidden" name="id" value="{{Auth::id()}}">
-		<input type="submit" value="Update User" class="btn btn-default btn-success">
+		<input type="submit" value="Update User" class="btn btn-primary">
 	</form>
 
 	<!-- DELETE POST BUTTON-->

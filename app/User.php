@@ -43,8 +43,14 @@ class User extends \App\Models\BaseModel implements AuthenticatableContract,
         return $this->hasMany("App\Models\Post", "created_by");
     }
 
+    public function delete() {
+        foreach($this->posts as $post) {
+            $post->delete();
+        }
+        parent::delete();
+    }
     public static $rules = array(
             'name' => 'required|max:200',
-            'email'   => 'required|email',
+            'email' => 'required|email',
         );
 }
