@@ -42,4 +42,9 @@ class User extends \App\Models\BaseModel implements AuthenticatableContract,
     {
         return $this->hasMany("App\Models\Post", "created_by");
     }
+
+    public static $rules = array(
+            'name' => 'required|max:200',
+            'email'   => 'required|email',
+        );
 }

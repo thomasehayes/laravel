@@ -30,38 +30,29 @@
 
 	        		<li {!! \Illuminate\Support\Str::endsWith(action('PostsController@index'), Request::path()) ? ' class="active"' : null !!}><a href="{{action('PostsController@index')}}">Posts <span class="sr-only">(current)</span></a></li>
 
-		        	<!-- <li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
+		     <!--    	<li {!! \Illuminate\Support\Str::endsWith(action('StudentsController@index'), Request::path()) ? ' class="active"' : null !!} ><a href="{{action('StudentsController@index')}}">Students</a></li>
  -->
-<!-- 		        	<li class="dropdown">
-		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		        	<li class="dropdown">
+		        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
 
 		          		<ul class="dropdown-menu" role="menu">
-		            		<li><a href="#">Action</a></li>
-		            		<li><a href="#">Another action</a></li>
-		            		<li><a href="#">Something else here</a></li>
+		          			@if(\Auth::check())
+		            			<li><a href="">My Posts</a></li>
+		            		@endif
+		            		
+		            		<li><a href="{{ action('PostsController@create') }}">Create Post</a></li>
 		            		<li class="divider"></li>
-		            		<li><a href="#">Separated link</a></li>
-		            		<li class="divider"></li>
-		            		<li><a href="#">One more separated link</a></li>
+							
+							@if(\Auth::check())
+		            			<li><a href="{{ action('UsersController@show', \Auth::id()) }}">Account Info</a></li>
+		            		@endif
+
 		        		</ul>
 
-		        	</li> -->
+		        	</li>
 
 	      		</ul>
 
-	    		<div class="navbar-form navbar-right" role="search" id="search">
-					
-					<form action="{{ action('PostsController@index')}}" method="GET" id="search">
-
-		        		<div class="form-group">
-		          			<input type="text" class="form-control" placeholder="Search" name="search" >
-		        		<button type="submit" class="btn btn-default">Submit</button>
-		        		</div>
-		        		
-					</form>
-
-
-	      		</div>
 
 	      		<ul class="nav navbar-nav navbar-right">
 
@@ -75,6 +66,19 @@
         			@endif
 	        		
 	      		</ul>
+	    		<div class="navbar-form navbar-right" role="search" id="search">
+					
+					<form action="{{ action('PostsController@index')}}" method="GET" id="search">
+
+		        		<div class="form-group">
+		          			<input type="text" class="form-control" placeholder="Search" name="search" >
+		        		<button type="submit" class="btn btn-default">Submit</button>
+		        		</div>
+		        		
+					</form>
+
+
+	      		</div>
 
 	    	</div>
 	  	</div>
