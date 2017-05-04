@@ -143,7 +143,7 @@ class PostsController extends Controller
             abort(404);
             // return redirect()->action('PostsController@index');
         }
-        if(\Auth::id() !== $post->created_by) {
+        if(\Auth::id() != $post->created_by) {
             abort(403);
         }
         $post->delete();

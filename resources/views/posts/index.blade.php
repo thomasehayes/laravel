@@ -5,6 +5,7 @@
 		<h1 class="text-center">All Posts</h1>
 		<table class="table">
 			<tr>
+				<th class="col-sm-1">Vote:</th>
 				<th class="col-sm-2"></a>Title:</th>
 				<th class="col-sm-2">Content:</th>
 				<th class="col-sm-2">URL:</th>
@@ -13,6 +14,8 @@
 			</tr>
 			@foreach($posts as $post) 
 				<tr>
+					<td class="glyphicon glyphicon-thumbs-up "></td>
+					<td class="glyphicon glyphicon-thumbs-down"> :</td>
 					<td><a href="{{action('PostsController@show', $post->id)}}"> {{ $post->title}} </a></td>
 					<td> {{ $post->content}}</td>
 					<td> {{ $post->url}}</td>

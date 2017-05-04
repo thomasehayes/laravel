@@ -56,6 +56,8 @@ Route::resource('posts', 'PostsController'); // A resource controller
 
 Route::resource('users', 'UsersController');
 
+Route::resource('votes', 'VotesController');
+
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
